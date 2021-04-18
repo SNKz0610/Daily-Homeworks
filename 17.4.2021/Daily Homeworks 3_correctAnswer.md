@@ -1,0 +1,4 @@
+Thư mục .git là nơi lưu trữ tất cả thông tin về git của project, bao gồm: thông tin remote repository, commit, history, branch... và git sẽ quản lý project của bạn thông qua thư mục này.
+Nếu xoá hoặc di chuyển thư mục .git thì tất cả thông tin commit, branch... của bạn sẽ biến mất, project sẽ không được đặt dưới sự quản lý của Git. Và nếu bạn thực hiện bất kì câu lệnh nào liên quan đến Git thì sẽ báo lỗi không có git repository. Do vậy, nếu chưa đưa project của bạn lên remote repository (Github, Gitlab...) thì không có cách nào lấy lại lịch sử commit của bạn.
+Bổ sung Khi di chuyển thư mục .git sang một thư mục mới thì tại thư mục mới, Git sẽ báo (git status) các file của folder cũ đã bị xoá và có thêm những file mới tại thư mục mới. Bởi vì Git không còn nhìn thấy những file đã được tracked trước đó tại thư mục cũ.
+Nhìn chung mọi người cũng đều đã tìm hiểu về câu hỏi này và cũng đã hiểu sơ qua được thư mục .git
