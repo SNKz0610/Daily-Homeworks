@@ -1,0 +1,7 @@
+Daily Homework
+(20/04/2021)
+
+Question: git commit -a
+*
+Được dùng để thực hiện commit bất kì file nào chúng ta đã thêm vào bằng lệnh git add cũng như các file đã thay đổi trước đó.
+Điều này chỉ được thực hiện với các Tracked File. Nó khá giống với git add . ở chỗ sẽ lưu toàn bộ sự thay đổi mới của các file trong Local Repo
