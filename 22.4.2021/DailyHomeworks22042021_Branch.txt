@@ -1,0 +1,175 @@
+Daily Homeworks
+(22/04/2021)
+
+
+I> Branch là gì?
+- Là chức năng được trang bị trên Git hỗ trợ việc quản lý phiên bản hay thêm nhiều chức năng được thêm
+song song,lưu trữ lại các lịch sử thay đổi thay đổi phiên bản của cùng 1 reponsitory.
+- Các thành viên trong nhóm sẽ tạp ra 1 branch riêng để phục vụ cho công việc của mình từ branch chính
+để không ảnh hưởng công việc đến các thành viên khác. Sau đó, những thành viên đã hoàn thành công 
+việc của mình sẽ thực hiện đưa thay đổi của mình vào branch chính.
+- Khi tiến hành commit lần đầu trong reponsitory thì Git sẽ tạo ra 1 branch có tên là master. Các lần commit
+sau đó sẽ được thêm vào branch master cho đến khi chuyển đổi branch 
+- Khởi tạo branch thông qua câu lệnh sau:
+               $ git branch <branch_name>
+- Để hiện thị các branch đã tạo, ta sử dụng lệnh:
+               $ git branch 
+Nó sẽ hiển thị danh sách các branch, ở dòng có dấu * thì đó là branch hiện tại
+- Branch đã phân nhánh có thể chỉnh sửa tổng hợp thành 1 branch bằng việc hợp lại (merge) với branch 
+khác thông qua câu lệnh merge
+              $ git merge <commit> 
+- Để xóa branch, ta sử dụng lệnh sau:
+              $ git branch -d <branch_name>
+
+
+II> Phân loại Branch
+- Bao gồm 2 loại dựa trên quy tắc vận dụng: 
++ Branch tích hợp (Intergration Branch) 
++ Branch chủ đề (Topic Branch)
+
+1, Branch tích hợp (Intergration Branch) 
+- Branch tích hợp là 1 branch có thể tạo ra bản phát hành bất cứ khi nào và nó nó cũng được sử dụng như 
+nguồn phân branch cho branch chủ đề. Vì thế việc duy trì trạng thái ổn định là hết sức cần thiết.
+- Thông thường sẽ sử dụng branch master như 1 branch tích hợp
+
+2, Branch chủ đề (Topic Branch)
+- Branch chủ đề là branch được tạo ra nhằm tiến hành công việc liên quan đến chủ đề như là thêm, sửa xóa
+chức năng.
+- Branch chủ đề được tạo ra bằng cách phân branch từ branch tích hợp đã ổn định. Khi hoàn thành xong 
+công việc ở branch topic thì sẽ sử dụng đưa vào branch tích hơp.
+- Số topic branch được tạo ra sẽ tương ứng với số chủ đề (các chức năng riêng) của công việc
+
+
+III> Chuyển đổi Branch 
+- Để chuyển đổi branch, ta sử dụng thao tác đó là checkout.
+- Khi thực hiện checkout, nội dung của lần commit cuối cùng trong branch sẽ được chuyển đến worktree của
+chúng ta. (last in first out)
+- Commit đã tiến hành sau khi checkout sẽ được thêm vào branch sau khi di chuyển đến 
+- Checkout sẽ được thực hiện bởi câu lệnh sau 
+            $ git checkout <branch_name>
+- Các thành phần xuất hiện khi chuyển đổi branch: HEAD và Stash
+
+1, HEAD
+- Là tên hiển thị phần đầu của branch đang sử dụng hiện tại, mặc định là hiển thị phần đầu của branch master
+- Di chuyển HEAD đồng nghĩa sẽ di chuyển branch đang sử dụng sang 1 branch khác 
+
+2, Stash
+- Là khu vực ghi lại tạm thời nội dung thay đổi của file chưa được commit trong work tree và index để tránh việc
+khi ta di chuyển từ branch hiện tại đến 1 branch khác mà ở branch đó  có file giống như vậy đã được thay đổi thì
+việc checkout sẽ thất bại.
+- Những thay đổi được lưu tạm thời này, về sau chúng ta có thể lấy ra và hiển thị trên branch ban đầu hoặc phản
+ảnh lên branch khác
+
+
+IV> Tích hợp branch
+- Ta sẽ tiến hành tích hợp các branch chủ đề sau khi đã hoàn thành xong vào branch tích hợp thông qua 2 phương
+pháp: Merge và Rebase 
+- Lịch sử của branch sau khi tích hợp bởi mỗi phương pháp sẽ có sự khác biệt lớn:
++Merge: Lịch sử nội dung thay đổi vẫn còn nhưng sẽ trở nên phức tạp hơn
++Rebase: Lịch sử sẽ trở nên đơn giản nhưng nội dung thay đổi của commit ban đầu sẽ bị thay đổi.
+ Sau đây chúng ta sẽ đi chi tiết vào chúng
+
+1, Merge
+- Khi sử dụng merge, có thể tổng hợp nhiều luồng lịch sử.
+- Có 2 trường hợp xảy ra khi chúng ta sử dụng Merge để tích hợp:
++ TH1: Fast-forward (Chuyển tiếp nhanh)
+   Branch tích hơp không có gì thay đổi sau khi phân branch topic thì việc thay đổi sẽ trở nên dễ dàng vì lịch sử của 
+   branch topic đã bao gồm lịch sử của branch tích hợp. Khi tiến hành merge cho branch tíhc hợp thì nó sẽ lấy được
+   nội dung của branch topic
++ TH2: Non fast-forward
+   Branch tích hơp có sự tiến triển thay đổi sau khi phân branch topic. Ở trường hợp này, chúng ta cần sử dụng 
+   merge commit để lấy sự thay đổi của cả 2 branch. Sau đó, HEAD của branch master sẽ di chuyển đến commit đó
+- Để tiến hành merge từ branch topic vào branch tích hợp, ta tiến hành các bước sau:
++ Di chuyển đến branch tích hợp:
+             $ git checkout  <branch_intergration>
++ Tích hợp branch topic vào branch tích hợp:
+             $ git merge  <branch_topic>
+2, Rebase (Đoạn này em chưa hiểu nên trình bày khá chung chung ạ)
+- Khi ta sử dụng rebase thì lịch sử thay đổi của branch topic sẽ được đính kèm sau branch tích hợp. Đại loại, nếu
+chỉ rebase không thôi thì vị trí đầu của branch  tích hợp vẫn cứ thế. Khi đó, ta sẽ tiến hành merge branch topic từ
+branch tích hợp rồi từ branch tích hợp di chuyển đến phần HEAD của branch topic
+
+
+
+V> Remote reponsitory
+- Bao gồm có 3 thao tác chính: 
++ Pulling
++ Fetching
++ Pushing
+
+1, Pulling
+- Có 2 trường hợp xảy ra
++TH1: Branch của Local Repo không có sự thay đổi 
+   Ở TH này, merge fast-forward sẽ được tiến hành
++ TH2: Lịch sử thay đổi có sự tiến triển dù là branch ở local repo
+   Khi đó, ta cần phải tích hợp sự thay đổi của cả 2 bên, điều đó đồng nghĩa khi pull thì merge cũng sẽ được tiến hành 
+   đồng thời. Nếu không có xung đột xảy ra thì merge commit sẽ được tự động sinh ra, ngược lại chúng phải tự tạo
+   commit
+
+2, Fetching
+- Được sử dụng khi chúng ta không muốn merge  mà chỉ muốn kiểm tra nội dung của remote reponsitory. Điều đó đồng 
+nghĩa, chúng ta chỉ có thể lấy commit lịch sử thay đổi mới nhất của  remote repo. Commit này sẽ được đưa vào 1 nhánh
+không tên và ta có thể thực hiện checkout  bằng tên là FETCH_HEAD.
+- Nếu ta muốn tích hợp nội dung của remote repo và master của local repo thì sẽ merge FETCH_HEAD hoặc pull lại
+
+3, Pushing
+- Khi push từ local repo lên remote repo, ta cần tránh phát sinh xung đột để nhánh muốn push có thể tiến hành merge 
+fast- forward
+
+
+
+VI> Tag
+- Là chức năng đặt tên 1 cách dễ hiểu để có thể dễ dàng tham chiếu commit.
+- Tag đã đính kèm một lần là cố định, vị trí không di chuyển được như branch.
+- Để xóa tag, ta sử dụng lệnh sau: 
+              $ git tag -d <tag_name>
+- Ở trên Git, ta có thể sử dụng 2 loại tag là Lighweigh tag và Annotated tag. 
+
+1, Lightweigh tag
+- Temporary tag là cái không thể thay đổi
+- Có thể đặt tên
+- Được sử dụng chủ yếu ở local repo (khu việc làm việc tạm thời)
+- Để thêm lighweigh tag, ta sử dụng lệnh sau:
+             $ git tag <tag_name>
+- Để hiện thị danh sách các tag: 
+             $ git tag
+- Để hiện thị danh sách lịch sử, thông tin các tag: 
+             $ git log --decorate
+
+2, Annotated tag
+- Có thể đính kèm tên, email, bình luận,chữ ký của người thực thiện và ngày thực hiện 
+- Có thể đặt tên.
+- Được sử dụng khi có kế hoạch đánh dấu commit quan trọng
+- Để thêm annotated tag, ta sử dụng lệnh sau:
+             $ git tag -am  "<comment>" <tag_name>
+- Để hiển thị danh sách các tag kèm bình luận: 
+             $ git tag -n 
+
+
+
+VII> Thay đổi commit
+1, Chỉnh sửa commit ngay trước đó
+- Khi chỉ định lựa chọn ammend rồi thực hiện commit, có thể chỉnh sửa bình luận và thêm 
+nội dung với commit ngay trước đó cùng nhánh
+- Các trường hợp sử dụng chính:
++ Thêm vào sau file đã commit thiếu trước đó
++ Chỉnh sửa bình luận commit ngay trước đó
+- Các bước tiến hành
++ Kiểm tra lịch sử của commit
+             $ git log
++ Mở file cần sửa commit lên và  thêm giải thích commit 
++ Thêm lựa chọn --amend rồi commit 
+            $ git add sample.txt
+            $ git commit --amend
++ Sử dụng git log để kiểm tra lại 
+
+2, Hủy bỏ commit trước đó 
+- Trên revert, có thể tạo ra commit hủy bỏ nội dung của commit đã chỉ định.
+- Cũng có thể xóa commit bằng reset hay rebase -i sẽ nói ở phần sau này, nhưng nếu trường hợp commit đó đã được công khai thì không thể tùy tiện xóa được. Những trường hợp như vậy thì có thể tạo ra commit xóa nội dung bằng revert.
+- Trường hợp được sử dụng chính: xóa 
+- Các cách hủy bỏ commit 
+
+a, Revert
+              $ git revert HEAD
+b, Reset
+              $ git reset --hard HEAD~~
