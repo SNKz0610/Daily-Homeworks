@@ -1,0 +1,11 @@
+Daily Homeworks
+(24/04/2021)
+
+Question 2: 
+Gỉa sử BranchA có lich sử commit có mã commit: Commit1 - Commit2
+Branch B được checkout từ branchA tại mã commit là Commit2 và có lich sử commit : Commit1 - Commit2 - Commit3 - Commit4. Khi merge branchB vào branchA thì lịch sử commit của branchA là gì?
+
+*
+- Khi merge branchB vào branchA thì lịch sử commit của branchA là 
+Commit1 - Commit2 - Commit3 - Commit4.
+- Giải thích: Khi branchB checkout từ branchA ở commit2 hay bất kì commit nào thì đến lúc chúng ta merge vào branchA, nó sẽ so sánh có sự tương quan giữa các commit 2 branch xem có sự thay đổi hay không. Cụ thể ở đây, ở branchB có 2 commit mới là Commit3-Commit4, chính là sự khác biệt so với commit ban đầu của branchA.
