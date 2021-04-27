@@ -14,4 +14,4 @@ phụ thuộc vào thời gian commit của commit 2, 3, 4 không?
 - Thứ tự xuất hiện các commit có phụ thuộc vào thời gian của các commit 2, 3, 4.
 - Xảy ra các trường hợp sau đối với commit 2 ở branch A:
 + Commit 2 xuất hiện trước commit 3, 4 => thứ tự commit lúc này sẽ là:  <merge commit> - 4 - 3 - 2 -1
-+ Commit 2 xuất hiện sau commit 3, 4 => thứ tự commit lúc này sẽ là:     <merge commit> - 2 - 3 - 4 - 1
++ Commit 2 xuất hiện sau commit 3, 4 => thứ tự commit lúc này sẽ là:     <merge commit> - 2 - 4 - 3 - 1
