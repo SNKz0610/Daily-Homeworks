@@ -1,0 +1,15 @@
+Daily Homeworks
+(29/04/2021)
+
+Question: 
+Viết một bài tìm hiểu về 3 tùy chọn merge : "create a merge commit", "Squash and merge", "Rebase and merge" khi thực hiện merge pull request trên github.
+
+*
+1. Create a merge commit
+- Đây là 1 lựa chọn mặc định nếu chúng ta không bấm vào chọn các lựa chọn khác. Nó sẽ tiến hành gộp toàn bộ các commit của nhánh yêu cầu pull request vào nhánh được merge. Lịch sử các commit lúc này sẽ phụ thuộc vào thời gian tạo các commit, tuy nhiên merge commit sẽ xuất hiện đầu tiên.
+
+2, Squash and merge
+- Squashing cho phép dọn dẹp lịch sử cam kết của một nhánh khi chấp nhận một pull request bằng cách gộp toàn bộ danh sách các commit thành 1 commit duy nhất trên nhánh đích muốn merge vào nhưng nó không đánh dấu bất kì mối quan hệ merge nào (không đụng chạm vào nhánh đem đi merge vào nhánh đích)
+
+3, Rebase and merge
+- Khi chúng ta lựa chọn option này, các commit  từ nhánh gửi pull request được phục hồi lại trên đầu của nhánh đích, không bị gộp như khi ta sử dụng option "Squash and merge"
