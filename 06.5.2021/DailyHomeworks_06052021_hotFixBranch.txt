@@ -1,0 +1,17 @@
+Daily Homeworks
+(06/05/2021)
+
+Question: 
+Trong gitflow, khi một nhánh hotfix được tạo, sau khi fix xong lỗi thì nó sẽ được merge vào những nhánh nào và lý do vì sao lại cần merge vào những nhánh đó.
+
+*
+Sau khi 1 nhánh hot fix được tạo và sửa xong lỗi, nó sẽ được merge vào tất cả các  nhánh, bao gồm theo thứ tự sau: 
+Master -> Canary -> Staging -> Develop
+(chỉ merge vào nhánh tiếp theo sau khi đã thực hiện pull request ở nhánh trước đó)
+
+- Master: để vá lỗi trực tiếp, phục vụ ngay cho thị trường người dùng 
+- Canary, Staging: vì họ cần phải update cho các version của mình
+- Develop: vì trong khi nhánh hot fix chưa/ đang/ sẽ được tạo, có thể nhánh develop đã 
+                  phát triển nhiều tính năng mới, và các Dev cũng cần được biết code ở  
+                  nhánh master, nói cách khác là thay đổi trên production đã có những gì 
+                  thay đổi để tích hợp vào code hiện tại của họ
