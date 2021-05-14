@@ -1,0 +1,49 @@
+DATA BASE
+(12/05/2021)
+
+I> CSDL là gì?
+1, Thông tin là gì?
+- Thông tin không phải dữ liệu 
+- Thông tin sau khi được lưu trữ dưới các định dạng nó sẽ trở thành dữ liệu
+2, Cơ sở dữ liệu là gì
+- Cơ sở dữ liệu là tập hợp các dữ liệu (văn bản hình ảnh âm thanh số liệu..) của một hay nhiều lĩnh vực ứng dụng, được tổ chức theo 1 cấu trúc nhất định mà máy tính lưu trữ được 
+- Những thông tin của 1 đối tượng sẽ được tổ chức theo 1 cấu trúc nhất định 
+3, Hệ cơ sở dữ liệu
+- Là các hệ thống giúp quản lý cơ sở dữ liệu
+4, Các thể hiện của csdl
+- mức khung hình: là những gì người dùng nhìn thấy bên ngoài và chúng ta cần sử dụng
+-mức logic: là tất cả những thứ lưu trong hệ thốn, giữa chúng có sự liên kết với nhau mà chúng ta cần biết 
+-mức trong: thao tác trực tiêp với phần cứng, thể hiện dưới dạng bản ghi và bảng
+
+5, Lợi ích của csdl
+- lưu trữ thông tin có hệ thống
+- đảm bảo an toàn dữ liệu
+- có thể phục vụ nhiều người cùng truy cập tại 1 thời điểm
+- quản lý dữ liệu dễ dàng, tránh trùng lặp dữ liệu
+- tách biệt giữa các chương trình
+- lưu dữ liệu thành dạng các bảng -> xem dữ liệu dễ dàng hơn
+- có thuộc tính ACID: 
+* Transaction:
++ Atomicity (Tính nguyên tử): trong 1 giao dịch có nhiều thao tác như đọc và ghi, chúng phải thực hiện đồng
+   thời hoặc là không thực hiện cả 2
+VD: trừ tiền trong tài khoản và rút tiền phải là đồng thời
+
++Consistency (tính nhất quán): là sự đồng nhất về kiểu dữ liệu
++ Isolation (tính độc lập): giữ cho các giao dịch tách rời nhau cho đến chúng đã hoàn 
+                                         tất theo thứ tự, tránh trộn lẫn nhau tạo ra dữ liệu k chính xác
++ Durability (tính bền bỉ): các thay đổi của transaction thành công phải được đồng bộ
+                                         xuống database bất kể khi hệ thống xảy ra lỗi hoặc bị mất    điện
+
+6, Liên kết trong cơ sở dữ liệu
+- có 3 loại: 1-1, 1-n, n-n
+
+7. Các khái niệm
+a, Khóa chính: là thuộc tính cuả 1 thực thể giúp nó phân biệt với các thực thể khác
+b, Khóa ngoại: 
+c, Thuộc tính: mô tả thông tin về thực thể
+d, Thuộc tính dẫn xuất: là thuộc tính được tính ra từ các thuộc tính cụ thể
+e, Bảng
+f, Bản ghi: là cụ thể của 1 thực thể, bao gồm các thuộc tính của thực thể
+7, Query: truy vấn, thao tác với cơ sở dữ liệu, có 3 loại: 
+- Tạo: tạo ra thực thể k phải dữ liệu
+- Thao tác với dữ liệu (thêm sửa xóa tìm)
